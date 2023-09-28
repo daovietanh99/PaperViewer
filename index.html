@@ -230,16 +230,16 @@
         </div>
     </div> <!-- container -->
 
-    <div class="container swiper-slide">
+        <div class="container swiper-slide">
         <div class="row mb-2 mt-4" id="paper-title">
             <h1 class="col-md-12 text-center">
-                Plenoxels
+                3D Reconstruction
             </h1>
             <h3 class="col-md-12 text-center">
-                Radiance Fields without Neural Networks
+                A new 3D Face Model for Vietnamese based on Basel Face Model
             </h3>
             <h3 class="col-md-12 text-center">
-                <small>CVPR 2022 (Oral)</small>
+                <small>ACIIDS 2022 (Oral)</small>
             </h3>
         </div>
 
@@ -247,34 +247,22 @@
             <div class="mx-auto text-center">
                 <ul class="list-inline mb-0">
                     <li class="list-inline-item">
-                        <a href="https://people.eecs.berkeley.edu/~sfk/">Sara Fridovich-Keil</a>
+                        <a href="https://people.eecs.berkeley.edu/~sfk/">Dang-Ha Nguyen</a>
                         <sup>*</sup>
                     </li>
 
                     <li class="list-inline-item">
-                        <a href="https://alexyu.net">Alex Yu</a>
+                        <a href="https://alexyu.net">Hoang-Anh Nguyen The</a>
                         <sup>*</sup>
                     </li>
 
                     <li class="list-inline-item">
-                        <a href="https://www.matthewtancik.com">Matthew Tancik</a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a href="https://www.linkedin.com/in/qinhong-chen/">Qinhong Chen</a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a href="http://people.eecs.berkeley.edu/~brecht/">Benjamin Recht</a>
-                    </li>
-
-                    <li class="list-inline-item">
-                        <a href="https://people.eecs.berkeley.edu/~kanazawa/">Angjoo Kanazawa</a>
+                        <a href="https://www.matthewtancik.com">Chau Ma Thi</a>
                     </li>
                 </ul>
                 <ul class="list-inline mb-0" id="institution">
                     <li class="list-inline-item">
-                        UC Berkeley
+                        Vietnam Korea Institute of Science and Technology
                     </li>
                     <li class="list-inline-item">
                         <sup>*</sup>
@@ -307,133 +295,37 @@
         <div class="row mb-3 pt-2">
             <div class="col-md-8 mx-auto">
                 <div class="embed-responsive embed-responsive-16by9 pb-3">
-                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/KCDd7UFO1d0" frameborder="0" allow="accelerometer; autoplay muted; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <img class="embed-responsive-item" src="imgs/face3d_diagram.png" style="height: auto;">
                 </div>
                 <p class="text-justify mt-2 pt-3">
-                    We propose a view-dependent sparse voxel model, Plenoxel <em>(plenoptic volume element)</em>, that can optimize to the same fidelity as <a href="http://tancik.com/nerf">Neural Radiance Fields (NeRFs)</a>
-                    without any neural networks. Our typical optimization time is 11 minutes on a single GPU, a speedup of two orders of magnitude compared to NeRF.
+                    We propose an approach that increases the accuracy of Vietnamese 3D faces generated from a single image by creating a new mean face shape
+                    and training a convolution neural network with our dataset. This method is compact and can improve the quality of 3D face reconstruction
+                    using facial image data with specific geographical and race characteristics.
                 </p>
             </div>
         </div>
         <div class="row mb-3 pt-2">
             <div class="col-md-8 mx-auto">
-                <img class="img-responsive" src="img/pipeline.png" alt="Pipeline (figure 2)">
                 <p class="text-justify">
-                    Given a set of calibrated images of an object or scene, we reconstruct a (a) sparse voxel (“Plenoxel”) grid with density and spherical harmonic coefficients at each voxel. To render a ray, we (b) compute the color and opacity of each sample point via trilinear interpolation of the neighboring voxel coefficients. We integrate the color and opacity of these samples using (c) differentiable volume rendering, following the recent success of NeRF. The voxel coefficients can then be (d) optimized using the standard MSE reconstruction loss relative to the training images, along with a total variation regularizer.
+                    To generate a 3D face model from a single image,
+                    we use 2 key components: <br>
+                    • Generative face model: A base 3D face model
+                    with a set of modifiable parameters for shape
+                    and texture. <br>
+                    • Deep-learning network: A convolutional neural
+                    network (CNN) is required to extract the
+                    features from the input image. The output
+                    coefficients from the network will then be
+                    combined with the parameters from the base
+                    3D model to generate the desired face.
                 </p>
 
             </div>
         </div>
-        <div class="row mb-4">
-            <div class="col-md-8 mx-auto">
-                <h4 class="mb-3">BibTeX</h4>
-                <textarea id="bibtex" class="form-control" readonly>
-@inproceedings{yu_and_fridovichkeil2021plenoxels,
-      title={Plenoxels: Radiance Fields without Neural Networks},
-      author={{Sara Fridovich-Keil and Alex Yu} and Matthew Tancik and Qinhong Chen and Benjamin Recht and Angjoo Kanazawa},
-      year={2022},
-      booktitle={CVPR},
-}</textarea>
-                <p>Note: joint first-authorship is not really supported in BibTex; you may need to modify the above if not using CVPR's format. For the SIGGRAPH format you can try the following</p>
-                <textarea id="bibtex" class="form-control" readonly>
-@inproceedings{yu_and_fridovichkeil2021plenoxels,
-      title={Plenoxels: Radiance Fields without Neural Networks},
-      author={{Fridovich-Keil and Yu} and Matthew Tancik and Qinhong Chen and Benjamin Recht and Angjoo Kanazawa},
-      year={2022},
-      booktitle={CVPR},
-}</textarea>
-            </div>
-        </div>
-        <div class="row mb-3 pt-1">
-            <div class="col-md-8 mx-auto">
-                <h4>Superfast Convergence</h4>
-                <p>
-                    Our method converges rapidly. We reach comparable metrics (PSNR) 100x faster than NeRF, and achieve reasonable results within a few seconds of optimization.
-                </p>
-                <video class="fullwid-vid" controls muted>
-                    <source src="https://people.eecs.berkeley.edu/~kanazawa/cachedir/plenoxel_data/fastopt.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        <div class="row mb-3 pt-1">
-            <div class="col-md-8 mx-auto">
-                <h4>Results on Forward-facing Scenes</h4>
-                <p>
-                    Using NeRF's NDC parameterization, we are able to approximately match NeRF's results on forward-facing scenes as well.
-                </p>
-                <video class="fullwid-vid" controls autoplay muted loop>
-                    <source src="https://people.eecs.berkeley.edu/~kanazawa/cachedir/plenoxel_data/eight.mp4" type="video/mp4">
-                </video>
-            </div>
-        </div>
-        <div class="row mb-3 pt-1">
-            <div class="col-md-8 mx-auto">
-                <h4>Results on 360&deg; Scenes</h4>
-                <p>
-                    We extend the method to 360&deg; real scenes using a background model based on multi-sphere images (MSI), similar to the approach used in <a href="https://arxiv.org/abs/2010.07492">NeRF++</a>.
-                </p>
-                <div class="row">
-                    <div class="col-md-6 col-tight">
-                        <video src="https://people.eecs.berkeley.edu/~kanazawa/cachedir/plenoxel_data/m60_close.mp4" class="fullwid-vid" controls autoplay muted loop>
-                        </video>
-                    </div>
-                    <div class="col-md-6 col-tight">
-                        <video src="https://people.eecs.berkeley.edu/~kanazawa/cachedir/plenoxel_data/playground.mp4" class="fullwid-vid" controls autoplay muted loop>
-                        </video>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row mb-3 pt-1">
-            <div class="col-md-8 mx-auto">
-                <h4>Background / Foreground</h4>
-                <p>
-                    The following is a capture of a real Lego bulldozer. We show the background and foreground models separately.
-                </p>
-                <div class="row">
-                    <div class="col-md-4 col-tight">
-                        <video src="https://people.eecs.berkeley.edu/~kanazawa/cachedir/plenoxel_data/spiral2.mp4" class="fullwid-vid" controls autoplay muted loop>
-                        </video>
-                        <p class="fullwid-centered">
-                            Full
-                        </p>
-                    </div>
-                    <div class="col-md-4 col-tight">
-                        <video src="https://people.eecs.berkeley.edu/~kanazawa/cachedir/plenoxel_data/spiral2_fg.mp4" class="fullwid-vid" controls autoplay muted loop>
-                        </video>
-                        <p class="fullwid-centered">
-                            Foreground
-                        </p>
-                    </div>
-                    <div class="col-md-4 col-tight">
-                        <video src="https://people.eecs.berkeley.edu/~kanazawa/cachedir/plenoxel_data/spiral2_bg.mp4" class="fullwid-vid" controls autoplay muted loop>
-                        </video>
-                        <p class="fullwid-centered">
-                            Background
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row mb-3">
             <div class="col-md-8 mx-auto">
-                <h4>Concurrent Works</h4>
-                <p>
-                    Please also check out <a href="https://arxiv.org/abs/2111.11215">DirectVoxGo</a>, a similar work which recently appeared on arXiv. They use a neural net to fit the color, but do not make use of TV regularization, SH, or sparse voxels. Additionally, their implementation does not require custom CUDA kernels.
-                </p>
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col-md-8 mx-auto">
-                <h4>Acknowledgements</h4>
-                <p class="text-justify">
-                    We note that Utkarsh Singhal and Sara Fridovich-Keil tried a related idea with point clouds some time prior to this project. Additionally, we would like to thank Ren Ng for helpful suggestions and Hang Gao for reviewing a draft of the paper. The NeRF++ results were generously provided by the authors.
-                </p>
-                <p class="text-justify">
-                    The project is generously supported in part by the CONIX Research Center,
-                    one of six centers in JUMP, a Semiconductor Research Corporation (SRC) program sponsored by DARPA; a Google research award to Angjoo Kanazawa; Benjamin Recht’s ONR awards N00014-20-1-2497 and N00014-18-1-2833, NSF CPS award 1931853, and the DARPA Assured Autonomy program (FA8750-18-C-0101).
-                    Sara Fridovich-Keil and Matthew Tancik are supported by the NSF GRFP.
-                </p>
+                <h4>Result</h4>
+                <img class="img-responsive" src="img/face3d_result.png" alt="Pipeline (figure 2)">
                 <p class="text-justify">
                     This website is in part based on a template of <a href="http://mgharbi.com/">Micha&euml;l Gharbi</a>, also used in <a href="https://alexyu.net/pixelnerf">PixelNeRF</a> and <a href="https://alexyu.net/plenoctrees">PlenOctrees</a>.
                 </p>
